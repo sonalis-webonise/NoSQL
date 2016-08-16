@@ -1,0 +1,54 @@
+
+db.addUser({
+	user: "super_admin",
+	pass: Pwd,
+	roles: [{"read","readWrite","userAdmin"}]
+})
+
+db.addUser({
+	user: "admin",
+	pass: Pwd,
+	roles: [{"read","readWrite"}]
+})
+
+db.addUser({
+	user: "super_admin",
+	pass: Pwd,
+	roles: ["read"]
+})
+
+
+user
+{
+	user_name: String,
+	password: password
+}
+
+profile
+{
+	full_name: name,
+	email_id: mail id of user,
+	user_name: username,
+	password: password
+}
+
+post
+{ 
+	post_id: id,
+	user_id: user id referenced,
+	post_title: title of post,
+	post_description: Description_of_post,
+	post_by: post_action_by,
+	like: total_likes_count,
+	comments:
+	{
+		user: comment by,
+		comment: comments,
+		date: date of comment,
+		reply:  {
+			 reply_by: reply by the user,
+			 reply: reply description
+			},
+		
+	}
+}
