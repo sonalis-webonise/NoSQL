@@ -1,26 +1,26 @@
 
 db.addUser({
 	user: "super_admin",
-	pass: Pwd,
+	password: password,
 	roles: [{"read","readWrite","userAdmin"}]
 })
 
 db.addUser({
 	user: "admin",
-	pass: Pwd,
+	password: password,
 	roles: [{"read","readWrite"}]
 })
 
 db.addUser({
 	user: "super_admin",
-	pass: Pwd,
+	password: password,
 	roles: ["read"]
 })
 
 
 user
 {
-	user_name: String,
+	user_name: string,
 	password: password
 }
 
@@ -37,7 +37,7 @@ post
 	post_id: id,
 	user_id: user id referenced,
 	post_title: title of post,
-	post_description: Description_of_post,
+	post_description: description_of_post,
 	post_by: post_action_by,
 	like: total_likes_count,
 	comments:
