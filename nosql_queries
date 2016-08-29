@@ -1,0 +1,44 @@
+db.users.insert({
+	"name" : "Sonali",
+	"email" : "sonali.sulgadle@weboniselab.com",
+	"password" : "webonise123#",
+	"role" : "super admin"
+});
+
+db.users.insert({
+	"name" : "Sneha",
+	"email" : "sneha@gmail.com",
+	"password" : "admin123#",
+	"role" : "admin"
+});
+
+
+db.posts.insert(
+{
+	"user_id" : ObjectId("57c410e93549102560f94e70"),
+	"title" : "Celebration",
+	"description" : "Celebrating 25th Anniversary of Parents"
+
+});
+
+db.posts.update(
+{ "user_id" : ObjectId("57c410e93549102560f94e70")},
+{$set: {	"likes" : ObjectId("57c413bb3549102560f94e72")}}
+);
+
+db.posts.update(
+{"user_id" : ObjectId("57c410e93549102560f94e70")},
+{$push :
+	{"comments" : {
+					$each : [{"comment" : "Nice..!!" , "commented_on" : "29/10/2016"}]
+				  }
+	}
+});
+
+db.posts.insert(
+{
+	"user_id" : ObjectId("57c413bb3549102560f94e72"),
+	"title" : "Image",
+	"description" : "first photo"
+});
+
