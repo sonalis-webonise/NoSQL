@@ -1,0 +1,23 @@
+db.users.insert({
+	"name" : "Sonali",
+	"email" : "sonali.sulgadle@weboniselab.com",
+	"password" : "webonise123#",
+	"role" : "super admin"
+});
+
+db.users.insert({
+	"name" : "Sneha",
+	"email" : "sneha@gmail.com",
+	"password" : "admin123#",
+	"role" : "admin"
+});
+
+db.users.insert({
+	"name" : "Ashrita",
+	"email" : "ashrita@weboniselab.com",
+	"password" : "admin@123",
+	"role" : "user"
+});
+
+
+

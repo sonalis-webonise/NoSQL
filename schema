@@ -1,0 +1,32 @@
+users()
+{
+	"_id" : ' ',
+	"name" : " ",
+	"email" : " ",
+	"password" : " ",
+	"role" : " "
+}
+
+posts()
+{
+	"_id" : ' ',
+	"user_id" : ' ',
+	"title" : " ",
+	"description" : " ",
+	"images" : "url",
+	"tags" : [],
+	"likes" : [],
+	"comments" : 
+		[
+			{
+				"comment" : " ",
+				"commented_date" : " ",
+				"likes" : []
+			},
+			{
+				"comment" : " ",
+				"commented_date" : " ",
+				"likes" : []
+			}
+		]
+}
