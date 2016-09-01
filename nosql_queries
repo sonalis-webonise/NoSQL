@@ -12,33 +12,12 @@ db.users.insert({
 	"role" : "admin"
 });
 
-
-db.posts.insert(
-{
-	"user_id" : ObjectId("57c410e93549102560f94e70"),
-	"title" : "Celebration",
-	"description" : "Celebrating 25th Anniversary of Parents"
-
+db.users.insert({
+	"name" : "Ashrita",
+	"email" : "ashrita@weboniselab.com",
+	"password" : "admin@123",
+	"role" : "user"
 });
 
-db.posts.update(
-{ "user_id" : ObjectId("57c410e93549102560f94e70")},
-{$set: {	"likes" : ObjectId("57c413bb3549102560f94e72")}}
-);
 
-db.posts.update(
-{"user_id" : ObjectId("57c410e93549102560f94e70")},
-{$push :
-	{"comments" : {
-					$each : [{"comment" : "Nice..!!" , "commented_on" : "29/10/2016"}]
-				  }
-	}
-});
-
-db.posts.insert(
-{
-	"user_id" : ObjectId("57c413bb3549102560f94e72"),
-	"title" : "Image",
-	"description" : "first photo"
-});
 

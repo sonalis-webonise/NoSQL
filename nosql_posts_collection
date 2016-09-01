@@ -1,0 +1,116 @@
+db.posts.insert(
+{
+	"user_id" : ObjectId("57c410e93549102560f94e70"),
+	"title" : "Celebration",
+	"description" : "Celebrating 25th Anniversary of Parents"
+
+});
+
+db.posts.update(
+{ "user_id" : ObjectId("57c410e93549102560f94e70")},
+{$set: {	"likes" : ObjectId("57c413bb3549102560f94e72")}}
+);
+
+db.posts.update(
+{"user_id" : ObjectId("57c410e93549102560f94e70")},
+{$push :
+	{"comments" : {"comment" : "Nice..!!" , "commented_on" : "29/10/2016"}
+	}
+}
+);
+
+db.posts.insert({
+	"user_id" : ObjectId("57c413bb3549102560f94e72"),
+	"title" : "Image",
+	"description" : "first photo",
+	"images" : "/HOME/NoSQL/img.jpg",
+	"tags" : [ObjectId("57c410e93549102560f94e70")]
+});
+
+db.posts.update(
+{"user_id" : ObjectId("57c413bb3549102560f94e72")},
+{$push:
+	{	"likes" : ObjectId("57c410e93549102560f94e70")}
+}
+);
+
+db.posts.update(
+{"user_id" : ObjectId("57c413bb3549102560f94e72")},
+{$push:
+	{"comments" :{"comment" : "cool pic.!!" , "commented_on" : "30/10/2016"}
+	}
+}
+);
+
+db.posts.update(
+{"user_id" : ObjectId("57c413bb3549102560f94e72")},
+{$push:
+	{"comments" :{"user_id" : ObjectId("57c413bb3549102560f94e72"), "comment" : "Thanks.." , "commented_on" : "30/10/2016"}
+	}
+}
+);
+
+db.posts.update(
+{"user_id" : ObjectId("57c413bb3549102560f94e72")},
+{$push:
+	{"comments" :{"user_id" : ObjectId("57c514d865feeab8643afaa1"), "comment" : "nice click" , "commented_on" : "30/10/2016"}
+	}
+}
+);
+
+
+db.posts.update(
+{ "user_id" : ObjectId("57c413bb3549102560f94e72")},
+{$push:
+{"comments":{"user_id" : ObjectId("57c410e93549102560f94e70"),"comment" : "Nice one","commented_on":"31-10-2016"}
+}
+}
+);
+
+
+db.posts.update(
+{"comments.comment" :"Nice one"},
+{$set: { "comments.$.comment" :"good one"}
+}
+);
+
+db.posts.update(
+{"user_id" : ObjectId("57c413bb3549102560f94e72")},
+{$pull:{"comments" : {"comment": "good one"}}}
+);
+
+db.posts.update(
+{"_id" : ObjectId("57c512967e26397eca5f5266")},
+{$pull:{"comments" : {"comment": "nice click"}}}
+);
+
+db.posts.update(
+{"_id" : ObjectId("57c512967e26397eca5f5266")},
+{$pull:{"comments" : {"id": "nice click"}}}
+);
+
+db.posts.aggregate(
+{$match:{"_id" : ObjectId("57c512967e26397eca5f5266")}},
+{$project: 
+	{count:{$size:"$comments"}}
+}
+);
+
+db.posts.aggregate(
+{$project: 
+	{count:{$size:"$comments"}}
+}
+);
+
+db.posts.find(
+{$where: "(this.comments.length > 1)"}
+).pretty();
+
+db.posts.find(
+{$where: "(this.comments.length > 0)"}
+).pretty();
+
+db.posts.aggregate(
+{$match:
+	{"comments" : {$gt : [0]}}
+}).pretty();
